@@ -8,6 +8,24 @@
       "avatar": "http",
       "createdAt": 1571213104370,
       "id": "Z2hlvDmLOSRZGebC_Z_aA"
+    },
+    {
+      "email": "admin@example.com",
+      "password": "password",
+      "role": "ADMIN",
+      "verified": false,
+      "avatar": "http",
+      "createdAt": 1580720346723,
+      "id": "xktVNhQGHDjz5q0sWdcPW"
+    },
+    {
+      "email": "member@example.com",
+      "password": "password",
+      "role": "MEMBER",
+      "verified": false,
+      "avatar": "http",
+      "createdAt": 1580720408467,
+      "id": "2BJ6FXqe6AGs__ueCqFLq"
     }
   ],
   "posts": [],

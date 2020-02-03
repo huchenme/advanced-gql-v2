@@ -29,7 +29,13 @@ const getUserFromToken = token => {
  * continues to the next resolver if true
  * @param {Function} next next resolver function ro run
  */
-const authenticated = next => (root, args, context, info) => {};
+const authenticated = next => (root, args, context, info) => {
+  console.log('authen');
+  if (!context.user) {
+    throw new Error('Not authenticated');
+  }
+  return next(root, args, context, info);
+};
 
 /**
  * checks if the user on the context has the specified role.
@@ -37,7 +43,19 @@ const authenticated = next => (root, args, context, info) => {};
  * @param {String} role enum role to check for
  * @param {Function} next next resolver function to run
  */
-const authorized = (role, next) => (root, args, context, info) => {};
+const authorized = (role, next) => (root, args, context, info) => {
+  console.log('author');
+  if (context.user.role !== role) {
+    throw new Error('Not authorized');
+  }
+  return next(root, args, context, info);
+};
+
+// admin
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InhrdFZOaFFHSERqejVxMHNXZGNQVyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTU4MDcyMDM0Nn0.LhFXs7tNP5xAp1wUp5MTSg1kVgdrq8N9vtnPwynOVe0
+
+// member
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJCSjZGWHFlNkFHc19fdWVDcUZMcSIsInJvbGUiOiJNRU1CRVIiLCJpYXQiOjE1ODA3MjA0MDh9.cxGji7Kyc8n3_96RlBgi6zi42GZQ5AWeLa8wqZw0vm0
 
 module.exports = {
   getUserFromToken,
